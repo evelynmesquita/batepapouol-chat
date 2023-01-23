@@ -175,6 +175,12 @@ header img{
     margin: 25px 22px;
 }
 
+header button {
+    border: none;
+    height: 40px;
+    display: contents;
+}
+
 main {
     margin-top: 100px;
     margin-bottom: 80px;

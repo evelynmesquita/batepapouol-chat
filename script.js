@@ -152,19 +152,19 @@ function loadingUser(activeUsers) {
 
     sidebarActive.innerHTML = '';
     sidebarActive.innerHTML = 
-        `<span onclick="recipient(this)">
+        `<span data-test="all" onclick="recipient(this)">
             <ion-icon name="person-circle-outline"></ion-icon>
             <p>Todos</p>
-            <ion-icon id="name" name="checkmark" class="escolha escolhafinal" data-name="Todos"></ion-icon>
+            <ion-icon data-test="check" id="name" name="checkmark" class="escolha escolhafinal" data-name="Todos"></ion-icon>
         </span>`
         
 
     for (let i = 0; i < active.length; i++) {
         sidebarActive.innerHTML += 
-        `<span onclick="recipient(this)">
+        `<span data-test="participant" onclick="recipient(this)">
             <ion-icon name="person-circle-outline"></ion-icon>
             <p data-identifier="participant">${active[i].name}</p>
-            <ion-icon id="name" name="checkmark" class="escolha" data-name="${active[i].name}"></ion-icon>
+            <ion-icon data-test="check" id="name" name="checkmark" class="escolha" data-name="${active[i].name}"></ion-icon>
         </span>`
     }
 

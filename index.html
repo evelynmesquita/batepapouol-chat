@@ -16,8 +16,8 @@
     <div class="login invisivel">
         <img src="media/logo 2.png" alt="Logo bate-papo UOL">
         <div class="input-primeira-tela"> 
-            <input type="text" placeholder="Digite seu nome">
-            <button onclick="userName()">Entrar</button> 
+            <input data-test="input-name" type="text" placeholder="Digite seu nome">
+            <button data-test="send-name" onclick="userName()">Entrar</button> 
         </div>
         <div class="loading hidden">
             <div class="loader"></div>
@@ -27,7 +27,7 @@
     <div class="chat">
         <header>
             <img src="media/logo 1.png" alt="Logo bate-papo UOL">
-            <ion-icon name="people" onclick="showSidebar()"></ion-icon>
+            <button onclick="showSidebar()"><ion-icon name="people" ></ion-icon></button>
         </header>
         <div class="sidebar hidden">
             <div>
@@ -41,15 +41,15 @@
                 <h3>Escolha a visibilidade:</h3>
             </div>
             <div>
-                <span>
+                <span data-test="public">
                     <ion-icon name="lock-open"></ion-icon>
                     <p data-identifier="visibility">Público</p>
                     <ion-icon id="publico" name="checkmark" class="escolha escolhafinal"></ion-icon>
                 </span>
-                <span>
+                <span data-test="private">
                     <ion-icon name="lock-closed"></ion-icon>
                     <p data-identifier="visibility">Reservadamente</p>
-                    <ion-icon id="reservado" name="checkmark" class="escolha"></ion-icon>
+                    <ion-icon data-test="check" id="reservado" name="checkmark" class="escolha"></ion-icon>
                 </span>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="enviar" onclick="closeSidebar()">
             <div>
                 <input type="text" class="messagem" placeholder="Escreva aqui..." autofocus>
-                <span>Enviando para <span>Todos</span> (<span>Público</span>)</span>
+                <span data-test="recipient">Enviando para <span>Todos</span> (<span>Público</span>)</span>
             </div>
             <ion-icon name="paper-plane-outline" onclick="sendNewMessage()"></ion-icon>
         </div>
