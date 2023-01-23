@@ -135,3 +135,39 @@ function configMessage(msg) {
     lastElement.scrollIntoView();
 }
 
+// BUSCAR USUARIOS E ALOCAR NA SIDEBAR
+
+function searchUser() {
+    const retornoUser = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
+    retornoUser.then(loadingUser)
+    retornoUser.catch(userExit)
+}
+
+// USUÁRIOS ATIVOS E CONFIGURAÇÃO DE FORMATO
+
+function loadingUser(activeUsers) {
+
+    const active = activeUsers.data;
+    const sidebarActive = document.querySelector('.usuariosAtivos');
+
+    sidebarActive.innerHTML = '';
+    sidebarActive.innerHTML = 
+        `<span onclick="recipient(this)">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <p>Todos</p>
+            <ion-icon id="name" name="checkmark" class="escolha escolhafinal" data-name="Todos"></ion-icon>
+        </span>`
+        
+
+    for (let i = 0; i < active.length; i++) {
+        sidebarActive.innerHTML += 
+        `<span onclick="recipient(this)">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <p data-identifier="participant">${active[i].name}</p>
+            <ion-icon id="name" name="checkmark" class="escolha" data-name="${active[i].name}"></ion-icon>
+        </span>`
+    }
+
+    visibility()
+}
+
