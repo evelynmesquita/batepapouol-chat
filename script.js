@@ -171,3 +171,34 @@ function loadingUser(activeUsers) {
     visibility()
 }
 
+// PRESS ENTER ENVIAR MENSAGENS
+
+newMsg.addEventListener('keypress', function(e) {
+    if(e.keyCode === 13) {
+        sendNewMessage();
+    }
+})
+
+
+function sendNewMessage() {
+    user.text = newMsg.value
+
+    const sendPromisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', user);
+    sendPromisse.then(searchMessage)
+
+    newMsg.value = '';
+}
+
+
+// FUNÇÃO ABRIR  E FECHAR SIDEBAR
+
+function showSidebar() {
+    let sidebar = document.querySelector('.sidebar')
+    sidebar.classList.remove('hidden')
+}
+
+function closeSidebar() {
+    let sidebar = document.querySelector('.sidebar')
+    sidebar.classList.add('hidden')
+}
+
