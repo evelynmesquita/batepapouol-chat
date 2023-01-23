@@ -64,3 +64,27 @@ function firtsLayoutHidden(){
     loading.classList.add('hidden')
 }
 
+// VERIFICAÇÃO DA EXISTENCIA DO NOME DO USUÁRIO
+
+function userExit(erro) {
+    alert('Erro ' + erro.request.status + " Usuario já exite")
+    window.location.reload()
+}
+
+// RESPONSE.DATA STATUS USUÁRIO
+
+function verify(response) {
+    console.log('staus: ' + response.data);
+}
+
+function noUser(){
+    window.location.reload()
+}
+
+function statusVerify() {
+    const status = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', activeUser);
+    status.then(verify);
+    status.catch(noUser)
+
+}
+
