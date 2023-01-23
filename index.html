@@ -44,12 +44,12 @@
             <div>
                 <span data-test="public">
                     <ion-icon name="lock-open"></ion-icon>
-                    <p data-identifier="visibility">Público</p>
+                    <p onclick="choosePrivacyPublic(this)" data-identifier="visibility">Público</p>
                     <ion-icon id="publico" name="checkmark" class="escolha escolhafinal"></ion-icon>
                 </span>
                 <span data-test="private">
                     <ion-icon name="lock-closed"></ion-icon>
-                    <p data-identifier="visibility">Reservadamente</p>
+                    <p onclick="choosePrivacyPublic(this)" data-identifier="visibility">Reservadamente</p>
                     <ion-icon data-test="check" id="reservado" name="checkmark" class="escolha"></ion-icon>
                 </span>
             </div>

@@ -3,6 +3,9 @@ const principalUser = document.querySelector('.login input');
 const newMsg = document.querySelector('.enviar > div input');
 let sidebar = document.querySelector('.sidebar')
 let overlay = document.querySelector('.overlay')
+const public = document.querySelector('#publico');
+const privaty = document.querySelector('#reservado');
+
 const user = {
     from: "",
     to: "Todos",
@@ -183,6 +186,10 @@ function sendNewMessage() {
     user.text = newMsg.value
     console.log(user)
 
+    if(user.to === "Todos" && user.type === "private_message") {
+        return alert("Você não pode mandar uma mensagem privada para todos")
+    }
+
     const sendPromisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', user);
     sendPromisse.then(searchMessage)
 
@@ -222,25 +229,69 @@ function recipient(destiny) {
 
 function visibility() {
     const finalRecipient = document.querySelector('.usuariosAtivos .escolhafinal')
-    const public = document.querySelector('#publico');
-    const privaty = document.querySelector('#reservado');
 
     const sendSubtext = document.querySelector('.enviar  div  span')
 
+    let tipoDaMensagem
+
+    if(user.type === 'message') {
+        tipoDaMensagem = "Público"
+    } else {
+        tipoDaMensagem = "Reservadamente"
+    }
+
     if (finalRecipient.dataset.name !== 'Todos') {
-        public.classList.remove('escolhafinal');
-        privaty.classList.add('escolhafinal');
         user.to = finalRecipient.dataset.name;
-        user.type = "private_message";
-        sendSubtext.innerHTML = `Enviando para <span>${user.to}</span> (<span>reservadademente</span>)`
+        
+        sendSubtext.innerHTML = `Enviando para <span>${user.to}</span> (<span>${tipoDaMensagem}</span>)`
 
     } else {
         public.classList.add('escolhafinal');  
         privaty.classList.remove('escolhafinal');
         user.to = 'Todos'
-        user.type = "message";
-        sendSubtext.innerHTML = `Enviando para <span>Todos</span> (<span>publico</span>)`
+        sendSubtext.innerHTML = `Enviando para <span>Todos</span> (<span>${tipoDaMensagem}</span>)`
+    }
+
+    console.log(user)
+
+
+}
+
+function choosePrivacyPublic(item) {
+    const sendSubtext = document.querySelector('.enviar  div  span')
+
+   
+
+    console.log(item.innerHTML)
+    if(item.innerHTML === "Reservadamente") {
+        public.classList.remove('escolhafinal');
+        privaty.classList.add('escolhafinal');
+        user.type = "private_message"
+       
+    } else {
+        public.classList.add('escolhafinal');
+        privaty.classList.remove('escolhafinal');
+        user.type = "message"
+        
+    }
+
+    let tipoDaMensagem;
+
+    if(user.type === 'message') {
+        tipoDaMensagem = "Público"
+    } else {
+        tipoDaMensagem = "Reservadamente"
     }
 
 
+    if(tipoDaMensagem === "Reservadamente") {
+        sendSubtext.innerHTML = `Enviando para <span>${user.to}</span> (<span>${tipoDaMensagem}</span>)`
+    } else {
+        sendSubtext.innerHTML = `Enviando para <span>${user.to}</span> (<span>${tipoDaMensagem}</span>)`
+
+    }
+
+    
+    console.log(user)
+    
 }

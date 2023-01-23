@@ -323,11 +323,6 @@ main > div > span span {
     display: none;
 }
 
-.sidebar > div span{
-    display: flex;
-    
-}
-
 .sidebar h3{
     font-size: 16px;
     font-weight: 700;
@@ -339,6 +334,7 @@ main > div > span span {
     display: flex;
     align-items: center;
     margin: 5px 20px;
+    cursor: pointer;
 }
 
 .sidebar p {
