@@ -88,3 +88,17 @@ function statusVerify() {
 
 }
 
+// BUSCAR MENSAGENS DO SERVIDOR
+
+function searchMessage() {
+    const retorno = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+    retorno.then(loadingMessage);
+    retorno.catch(userExit);
+}
+
+function loadingMessage(serverMessage) {
+    let receivedMessage = serverMessage.data
+    configMessage(receivedMessage)
+
+}
+
