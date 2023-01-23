@@ -115,17 +115,17 @@ function configMessage(msg) {
         }
 
         if (msg[i].type == 'status') {
-            msgs.innerHTML += `<div class="entrou-sala" data-test="message">
+            msgs.innerHTML += `<div data-test="message" class="entrou-sala" >
             <span><span class="time">(${msg[i].time})</span>  <span class="user">${msg[i].from}</span> para <span class="destino">${msg[i].to}:</span>  ${msg[i].text}</span>
             </div>`
 
         } else if (msg[i].type == "message") {
-            msgs.innerHTML += `<div class="envio-msg" data-test="message">
+            msgs.innerHTML += `<div data-test="message" class="envio-msg" >
             <span><span class="time">(${msg[i].time})</span>  <span class="user">${msg[i].from}</span> para <span class="destino">${msg[i].to}:</span>  ${msg[i].text}</span>
             </div>`
             
         } else if (msg[i].type === 'private_message' && (msg[i].to === user.from || msg[i].from === user.from)) {
-            msgs.innerHTML += `<div class="direct" data-test="message">
+            msgs.innerHTML += `<div data-test="message" class="direct" >
             <span><span class="time">(${msg[i].time})</span>  <span class="user">${msg[i].from}</span> para <span class="destino">${msg[i].to}:</span>  ${msg[i].text}</span>
             </div>`
         }
