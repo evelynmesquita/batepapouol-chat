@@ -296,6 +296,20 @@ main > div > span span {
     transition: all .5s;
 }
 
+.overlay.hidden {
+    display: none;
+}
+
+.overlay {
+    width: 116px;
+    height: 100vh;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #00000099;
+}
+
 .sidebar > div {
     position: relative;
     display: flex;

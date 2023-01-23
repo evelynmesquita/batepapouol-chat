@@ -29,6 +29,7 @@
             <img src="media/logo 1.png" alt="Logo bate-papo UOL">
             <button onclick="showSidebar()"><ion-icon name="people" ></ion-icon></button>
         </header>
+        <div data-test="overlay" class="overlay hidden" onclick="closeSidebar()"></div>
         <div class="sidebar hidden">
             <div>
                 <h3>Escolha um contato
@@ -53,14 +54,14 @@
                 </span>
             </div>
         </div>
-        <main class="todasMensagens" onclick="closeSidebar()">
+        <main class="todasMensagens">
         </main>
-        <div class="enviar" onclick="closeSidebar()">
+        <div class="enviar">
             <div>
-                <input type="text" class="messagem" placeholder="Escreva aqui..." autofocus>
+                <input data-test="input-message" type="text" class="messagem" placeholder="Escreva aqui..." autofocus>
                 <span data-test="recipient">Enviando para <span>Todos</span> (<span>Público</span>)</span>
             </div>
-            <ion-icon name="paper-plane-outline" onclick="sendNewMessage()"></ion-icon>
+            <ion-icon data-test="send-message" name="paper-plane-outline" onclick="sendNewMessage()"></ion-icon>
         </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

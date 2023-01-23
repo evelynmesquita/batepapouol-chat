@@ -1,6 +1,8 @@
 const loading = document.querySelector('.loading');
 const principalUser = document.querySelector('.login input');
 const newMsg = document.querySelector('.enviar > div input');
+let sidebar = document.querySelector('.sidebar')
+let overlay = document.querySelector('.overlay')
 const user = {
     from: "",
     to: "Todos",
@@ -113,17 +115,17 @@ function configMessage(msg) {
         }
 
         if (msg[i].type == 'status') {
-            msgs.innerHTML += `<div class="entrou-sala">
+            msgs.innerHTML += `<div class="entrou-sala" data-test="message">
             <span><span class="time">(${msg[i].time})</span>  <span class="user">${msg[i].from}</span> para <span class="destino">${msg[i].to}:</span>  ${msg[i].text}</span>
             </div>`
 
         } else if (msg[i].type == "message") {
-            msgs.innerHTML += `<div class="envio-msg">
+            msgs.innerHTML += `<div class="envio-msg" data-test="message">
             <span><span class="time">(${msg[i].time})</span>  <span class="user">${msg[i].from}</span> para <span class="destino">${msg[i].to}:</span>  ${msg[i].text}</span>
             </div>`
             
         } else if (msg[i].type === 'private_message' && (msg[i].to === user.from || msg[i].from === user.from)) {
-            msgs.innerHTML += `<div class="direct">
+            msgs.innerHTML += `<div class="direct" data-test="message">
             <span><span class="time">(${msg[i].time})</span>  <span class="user">${msg[i].from}</span> para <span class="destino">${msg[i].to}:</span>  ${msg[i].text}</span>
             </div>`
         }
@@ -193,13 +195,13 @@ function sendNewMessage() {
 // FUNÇÃO ABRIR  E FECHAR SIDEBAR
 
 function showSidebar() {
-    let sidebar = document.querySelector('.sidebar')
     sidebar.classList.remove('hidden')
+    overlay.classList.remove('hidden')
 }
 
 function closeSidebar() {
-    let sidebar = document.querySelector('.sidebar')
     sidebar.classList.add('hidden')
+    overlay.classList.add('hidden')
 }
 
 /*ESCOLHER USUARIO MANDAR MENSAGEM*/
