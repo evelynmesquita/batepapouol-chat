@@ -110,9 +110,9 @@ function configMessage(msg) {
     const msgs = document.querySelector('.todasMensagens');
     msgs.innerHTML = '';
     for (let i = 0; i < msg.length; i++) {
-        if (msg[i].from.length > 8) {
-            msg[i].from = msg[i].from.slice(0, 10);
-        }
+        // if (msg[i].from.length > 8) {
+        //     msg[i].from = msg[i].from.slice(0, 10);
+        // }
 
         if (msg[i].type == 'status') {
             msgs.innerHTML += `<div data-test="message" class="entrou-sala" >
