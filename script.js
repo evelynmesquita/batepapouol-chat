@@ -202,3 +202,45 @@ function closeSidebar() {
     sidebar.classList.add('hidden')
 }
 
+/*ESCOLHER USUARIO MANDAR MENSAGEM*/
+
+function recipient(destiny) {
+
+    const usuarios = document.querySelectorAll('.usuariosAtivos .escolhafinal')
+    usuarios.forEach((usuario) => {
+        usuario.classList.remove('escolhafinal')
+    })
+
+    const destined = destiny.querySelector('.usuariosAtivos :last-child:last-Child')
+    const classes = destined.classList
+    classes.add('escolhafinal')
+
+    visibility()
+
+}
+
+
+function visibility() {
+    const finalRecipient = document.querySelector('.usuariosAtivos .escolhafinal')
+    const public = document.querySelector('#publico');
+    const privaty = document.querySelector('#reservado');
+
+    const sendSubtext = document.querySelector('.enviar  div  span')
+
+    if (finalRecipient.dataset.name !== 'Todos') {
+        public.classList.remove('escolhafinal');
+        privaty.classList.add('escolhafinal');
+        user.to = finalRecipient.dataset.name;
+        user.type = "private_message";
+        sendSubtext.innerHTML = `Enviando para <span>${user.to}</span> (<span>reservadademente</span>)`
+
+    } else {
+        public.classList.add('escolhafinal');  
+        privaty.classList.remove('escolhafinal');
+        user.to = 'Todos'
+        user.type = "message";
+        sendSubtext.innerHTML = `Enviando para <span>Todos</span> (<span>publico</span>)`
+    }
+
+
+}
