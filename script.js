@@ -110,9 +110,6 @@ function configMessage(msg) {
     const msgs = document.querySelector('.todasMensagens');
     msgs.innerHTML = '';
     for (let i = 0; i < msg.length; i++) {
-        // if (msg[i].from.length > 8) {
-        //     msg[i].from = msg[i].from.slice(0, 10);
-        // }
 
         if (msg[i].type == 'status') {
             msgs.innerHTML += `<div data-test="message" class="entrou-sala" >
@@ -155,7 +152,7 @@ function loadingUser(activeUsers) {
     sidebarActive.innerHTML = '';
     sidebarActive.innerHTML = 
         `<span data-test="all" onclick="recipient(this)">
-            <ion-icon name="person-circle-outline"></ion-icon>
+            <ion-icon name="people"></ion-icon>
             <p>Todos</p>
             <ion-icon data-test="check" id="name" name="checkmark" class="escolha escolhafinal" data-name="Todos"></ion-icon>
         </span>`
@@ -184,6 +181,7 @@ newMsg.addEventListener('keypress', function(e) {
 
 function sendNewMessage() {
     user.text = newMsg.value
+    console.log(user)
 
     const sendPromisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', user);
     sendPromisse.then(searchMessage)

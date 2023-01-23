@@ -283,12 +283,11 @@ main > div > span span {
 
 .sidebar {
     z-index: 100;
-    overflow-x: scroll;
+    overflow-y: scroll;
     position: fixed;
     top: 0;
     right: 0;
     background-color: #fff;
-    box-shadow: -150px 0px 0px rgba(0, 0, 0, 0.405);
     width: 259px;
     height: 100vh;
     display: flex;
@@ -301,7 +300,7 @@ main > div > span span {
 }
 
 .overlay {
-    width: 116px;
+    width: 150px;
     height: 100vh;
     z-index: 100;
     position: fixed;
