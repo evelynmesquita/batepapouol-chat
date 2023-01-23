@@ -38,3 +38,29 @@ principalUser.addEventListener('keypress', function(e) {
     }
 })
 
+// BUSCANDO NOVOS USUARIOS DO SERVIDOR
+
+function newUser() {
+
+    searchMessage();
+    searchUser()
+
+    setTimeout(firtsLayoutHidden , 2000 )
+    setInterval(searchUser, 20000)
+    setInterval(searchMessage, 3000)
+}
+
+// SEGUNDA TELA - LOADING
+
+function showSecondLayout(){
+    const inputTela = document.querySelector('.input-primeira-tela')
+    loading.classList.remove('hidden')
+    inputTela.classList.add('hidden')
+}
+
+function firtsLayoutHidden(){
+    const login = document.querySelector('.login')
+    login.classList.remove('login')
+    loading.classList.add('hidden')
+}
+
